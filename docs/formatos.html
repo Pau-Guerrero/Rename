@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es" data-lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formatos Soportados - RenameGX</title>
+    <meta name="description" content="Todos los formatos de imagen soportados por RenameGX: JPG, PNG, WebP, GIF, SVG, BMP, TIFF y más.">
+    <meta name="theme-color" content="#08090d">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" onload="this.onload=null;this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"></noscript>
+    
+    <script src="https://cdn.tailwindcss.com" defer></script>
+    
+    <style>
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+        html{scroll-behavior:smooth}
+        
+        body{
+            font-family:'Space Grotesk',system-ui,-apple-system,sans-serif;
+            background:#08090d;color:#e4e4e9;
+            min-height:100vh;overflow-x:hidden;
+        }
+        
+        .hidden{display:none!important}
+        .skip-link{position:absolute;top:-100%;left:16px;background:#00e5a0;color:#08090d;padding:12px 24px;border-radius:0 0 12px 12px;font-weight:600;z-index:100000;transition:top .3s}.skip-link:focus{top:0}
+        
+        .grid-pattern{position:fixed;inset:0;background-image:linear-gradient(#1f2130 1px,transparent 1px),linear-gradient(90deg,#1f2130 1px,transparent 1px);background-size:80px 80px;opacity:.08;pointer-events:none;z-index:0}
+        .noise{position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.03;pointer-events:none;z-index:1}
+        
+        nav{
+            position:fixed;top:0;left:0;right:0;z-index:50;
+            padding:16px 24px;
+            backdrop-filter:blur(20px);
+            background:rgba(8,9,13,.7);
+            border-bottom:1px solid #1f2130;
+        }
+        
+        .logo{display:flex;align-items:center;gap:12px;font-weight:800;font-size:1.5rem;text-decoration:none;color:inherit}
+        .logo-icon{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#00e5a0,#00b8ff);display:flex;align-items:center;justify-content:center}
+        .logo-gx{color:#00e5a0}
+        
+        .nav-link{color:#5c5c6d;text-decoration:none;font-weight:500;transition:color .2s;padding:8px 16px;border-radius:8px}
+        .nav-link:hover,.nav-link:focus{color:#e4e4e9;background:rgba(255,255,255,.05)}
+        
+        .format-card{
+            background:rgba(15,17,23,.6);
+            border:1px solid #1f2130;
+            border-radius:16px;
+            padding:28px;
+            display:flex;
+            align-items:center;
+            gap:20px;
+            transition:all .3s ease;
+        }
+        .format-card:hover{
+            border-color:rgba(0,229,160,.3);
+            transform:translateX(8px);
+            background:rgba(15,17,23,.8);
+        }
+        
+        .format-icon{
+            width:64px;height:64px;border-radius:14px;
+            display:flex;align-items:center;justify-content:center;
+            font-family:'JetBrains Mono',monospace;
+            font-weight:700;font-size:.85rem;
+            flex-shrink:0;
+        }
+        
+        .category-header{
+            display:inline-flex;align-items:center;gap:12px;
+            padding:12px 24px;background:rgba(0,229,160,.08);
+            border:1px solid rgba(0,229,160,.15);
+            border-radius:100px;
+            margin-bottom:24px;
+        }
+        
+        @media(prefers-reduced-motion:reduce){
+            *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+        }
+
+        .fade-in{opacity:0;transform:translateY(30px);transition:all .6s ease}
+        .fade-in.visible{opacity:1;transform:translateY(0)}
+    </style>
+</head>
+<body>
+    <a href="#main" class="skip-link">Saltar al contenido</a>
+    <div class="grid-pattern" aria-hidden="true"></div>
+    <div class="noise" aria-hidden="true"></div>
+
+    <!-- Navegación -->
+    <nav role="navigation" aria-label="Navegación principal">
+        <div style="max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between">
+            <a href="index.html" class="logo">
+                <div class="logo-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#08090d" stroke-width="2.5"><path d="M12 3v18M8 7l4-4 4 4M4 14h16M8 20l4 4 4-4"/><text x="12" y="17" text-anchor="middle" font-size="8" font-weight="bold" fill="#08090d">GX</text></svg></div>
+                <span>Rename<span class="logo-gx">GX</span></span>
+            </a>
+            <div style="display:flex;align-items:center;gap:8px">
+                <a href="index.html" class="nav-link">Inicio</a>
+                <a href="caracteristicas.html" class="nav-link">Características</a>
+                <a href="formatos.html" class="nav-link" style="color:#00e5a0">Formatos</a>
+                <a href="https://github.com/Pau-Guerrero/Rename" target="_blank" rel="noopener noreferrer" class="nav-link">GitHub</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section style="padding:140px 24px 80px;text-align:center;position:relative">
+        <div style="max-width:800px;margin:auto;position:relative;z-index:2">
+            <div class="badge fade-in" style="display:inline-flex;align-items:center;gap:8px;padding:8px 16px;background:rgba(0,229,160,.12);border:1px solid rgba(0,229,160,.2);border-radius:100px;font-size:.85rem;color:#00e5a0;margin-bottom:24px">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                Compatibilidad total
+            </div>
+            <h1 class="fade-in" style="font-size:clamp(2.5rem,7vw,4.5rem);font-weight:800;line-height:1.1;letter-spacing:-.03em;margin-bottom:24px">
+                Formatos<br><span style="background:linear-gradient(135deg,#00e5a0,#00b8ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">soportados</span>
+            </h1>
+            <p class="fade-in" style="font-size:1.2rem;color:#5c5c6d;max-width:550px;margin:0 auto;line-height:1.7">
+                RenameGX soporta todos los formatos de imagen más populares. Aquí tienes la lista completa.
+            </p>
+            
+            <!-- Contador de formatos -->
+            <div class="fade-in" style="display:flex;justify-content:center;gap:48px;margin-top:48px;flex-wrap:wrap">
+                <div style="text-align:center">
+                    <div style="font-size:3rem;font-weight:800;color:#00e5a0;font-family:'JetBrains Mono',monospace">9+</div>
+                    <div style="color:#5c5c6d;font-size:.9rem">Formatos</div>
+                </div>
+                <div style="text-align:center">
+                    <div style="font-size:3rem;font-weight:800;color:#00b8ff;font-family:'JetBrains Mono',monospace">100%</div>
+                    <div style="color:#5c5c6d;font-size:.9rem">Local</div>
+                </div>
+                <div style="text-align:center">
+                    <div style="font-size:3rem;font-weight:800;color:#e4e4e9;font-family:'JetBrains Mono',monospace">∞</div>
+                    <div style="color:#5c5c6d;font-size:.9rem">Archivos</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contenido Principal -->
+    <main id="main" style="position:relative;z-index:10;max-width:900px;margin:0 auto;padding:0 24px 100px">
+        
+        <!-- Formatos Principales -->
+        <section aria-labelledby="primary-title" style="margin-bottom:64px">
+            <div class="category-header fade-in">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00e5a0" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <span id="primary-title" style="font-weight:600;color:#00e5a0">Formatos principales</span>
+            </div>
+            
+            <div style="display:flex;flex-direction:column;gap:16px">
+                
+                <article class="format-card fade-in">
+                    <div class="format-icon" style="background:linear-gradient(135deg,#f59e0b,#d97706);color:#08090d">JPG</div>
+                    <div style="flex:1">
+                        <h3 style="font-size:1.15rem;font-weight:700;margin-bottom:4px">JPEG / JPG</h3>
+                        <p style="color:#5c5c6d;font-size:.95rem">El formato más común para fotografías. Compresión con pérdida ideal para web.</p>
+                    </div>
+                    <span style="padding:6px 14px;background:rgba(0,229,160,.12);color:#00e5a0;border-radius:100px;font-size:.8rem;font-weight:600">Popular</span>
+                </article>
+
+                <article class="format-card fade-in">
+                    <div class="format-icon" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff">PNG</div>
+                    <div style="flex:1">
+                        <h3 style="font-size:1.15rem;font-weight:700;margin-bottom:4px">PNG</h3>
+                        <p style="color:#5c5c6d;font-size:.95rem">Soporta transparencia y compresión sin pérdida. Perfecto para gráficos e iconos.</p>
+                    </div>
+                    <span style="padding:6px 14px;background:rgba(0,229,160,.12);color:#00e5a0;border-radius:100px;font-size:.8rem;font-weight:600">Popular</span>
+                </article>
+
+                <article class="format-card fade-in">
+                    <div class="format-icon" style="background:linear-gradient(135deg,#3b82f6,#2563eb);color:#fff">WEBP</div>
+                    <div style="flex:1">
+                        <h3 style="font-size:1.15rem;font-weight:700;margin-bottom:4px">WebP</h3>
+                        <p style="color:#5c5c6d;font-size:.95rem">Formato moderno de Google. Mejor compresión que JPG y PNG combinados.</p>
+                    </div>
+                    <span style="padding:6px 14px;background:rgba(0,184,255,.12);color:#00b8ff;border-radius:100px;font-size:.8rem;font-weight:600">Moderno</span>
+                </article>
+
+                <article class="format-card fade-in">
+                    <div class="format-icon" style="background:linear-gradient(135deg,#ec4899,#db2777);color:#fff">GIF</div>
+                    <div style="flex:1">
+                        <h3 style="font-size:1.15rem;font-weight:700;margin-bottom:4px">GIF</h3>
+                        <p style="color:#5c5c6d;font-size:.95rem">Imágenes animadas. Soporte completo incluyendo animaciones.</p>
+                    </div>
+                    <span style="padding:6px 14px;background:rgba(0,229,160,.12);color:#00e5a0;border-radius:100px;font-size:.8rem;font-weight:600">Animado</span>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Formatos Vectoriales -->
+        <section aria-labelledby="vector-title" style="margin-bottom:64px">
+            <div class="category-header fade-in">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00b8ff" stroke-width="2"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+                <span id="vector-title" style="font-weight:600;color:#00b8ff">Vectoriales</span>
+            </div>
+            
+            <div style="display:flex;flex-direction:column;gap:16px">
+                
+                <article class="format-card fade-in">
+                    <div class="format-icon" style="background:linear-gradient(135deg,#f97316,#ea580c);color:#fff">SVG</div>
+                    <div style="flex:1">
+                        <h3 style="font-size:1.15rem;font-weight:700;margin-bottom:4px">SVG</h3>
+                        <p style="color:#5c5c6d;font-size:.95rem">Gráficos vectoriales escalables. Ideal para logos, iconos e ilustraciones.</p>
+                    </div>
+                    <span style="padding:6px 14px;background:rgba(0,184,255,.12);color:#00b8ff;border-radius:100px;font-size:.8rem;font-weight:600">Vectorial</span>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Formatos Adicionales -->
+        <section aria-labelledby="other-title" style="margin-bottom:64px">
+            <div class="category-header fade-in">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e4e4e9" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+                <span id="other-title" style="font-weight:600;color:#e4e4e9">Otros formatos</span>
+            </div>
+            
+            <div style="display:flex;flex-direction:column;gap:16px">
+                
+                <article class="format-card fade-in">
+                    <div class="format-icon" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:#fff">BMP</div>
+                    <div style="flex:1">
+                        <h3 style="font-size:1.15rem;font-weight:700;margin-bottom:4px">BMP (Bitmap)</h3>
+                        <p style="color:#5c5c6d;font-size:.95rem">Formato sin compresión. Máxima calidad, tamaño grande.</p>
+                    </div>
+                </article>
+
+                <article class="format-card fade-in">
+                    <div class="format-icon" style="background:linear-gradient(135deg,#6366f1,#4f46e5);color:#fff">TIFF</div>
+                    <div style="flex:1">
+                        <h3 style="font-size:1.15rem;font-weight:700;margin-bottom:4px">TIFF / TIF</h3>
+                        <p style="color:#5c5c6d;font-size:.95rem">Alta calidad para impresión profesional y archivo fotográfico.</p>
+                    </div>
+                </article>
+
+                <article class="format-card fade-in">
+                    <div class="format-icon" style="background:linear-gradient(135deg,#14b8a6,#0d9488);color:#fff">ICO</div>
+                    <div style="flex:1">
+                        <h3 style="font-size:1.15rem;font-weight:700;margin-bottom:4px">ICO</h3>
+                        <p style="color:#5c5c6d;font-size:.95rm">Iconos de Windows. Favicons y aplicaciones de escritorio.</p>
+                    </div>
+                </article>
+
+                <article class="format-card fade-in">
+                    <div class="format-icon" style="background:linear-gradient(135deg,#64748b,#475569);color:#fff">AVIF</div>
+                    <div style="flex:1">
+                        <h3 style="font-size:1.15rem;font-weight:700;margin-bottom:4px">AVIF</h3>
+                        <p style="color:#5c5c6d;font-size:.95rem">El futuro de la imagen web. Compresión superior a WebP.</p>
+                    </div>
+                    <span style="padding:6px 14px;background:rgba(0,184,255,.12);color:#00b8ff;border-radius:100px;font-size:.8rem;font-weight:600">Nuevo</span>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Nota técnica -->
+        <section class="fade-in" style="padding:32px;background:rgba(0,229,160,.04);border:1px solid rgba(0,229,160,.12);border-radius:20px;margin-bottom:48px">
+            <div style="display:flex;gap:20px;align-items:flex-start">
+                <div style="width:48px;height:48px;border-radius:12px;background:rgba(0,229,160,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00e5a0" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                </div>
+                <div>
+                    <h3 style="font-size:1.15rem;font-weight:700;margin-bottom:8px">Nota importante</h3>
+                    <p style="color:#5c5c6d;line-height:1.7">RenameGX <strong style="color:#e4e4e9">solo renombra</strong> los archivos, no modifica su contenido ni formato original. La extensión del archivo se mantiene intacta a menos que explícitamente decidas cambiarla.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="fade-in" style="text-align:center;padding:60px 40px;background:linear-gradient(135deg,rgba(0,229,160,.08),rgba(0,184,255,.08));border:1px solid rgba(0,229,160,.15);border-radius:24px">
+            <h2 style="font-size:2rem;font-weight:700;margin-bottom:16px">Tu formato no está en la lista?</h2>
+            <p style="color:#5c5c6d;margin-bottom:28px;max-width:450px;margin-left:auto;margin-right:auto">Abre una issue en GitHub y lo añadiremos en la próxima versión.</p>
+            <a href="https://github.com/Pau-Guerrero/Rename/issues" target="_blank" rel="noopener noreferrer" class="btn-primary" style="display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:linear-gradient(135deg,#00e5a0,#00b8ff);color:#08090d;font-weight:700;border:none;border-radius:12px;cursor:pointer;text-decoration:none">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                Solicitar formato
+            </a>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer style="position:relative;z-index:10;background:#0f1117;border-top:1px solid #1f2130;padding:48px 24px 32px;margin-top:80px">
+        <div style="max-width:1200px;margin:auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;font-size:.9rem;color:#9ca3af">
+            <span>© 2025 RenameGX.</span>
+            <div style="display:flex;gap:24px">
+                <a href="index.html" style="color:#9ca3af;text-decoration:none">Inicio</a>
+                <a href="caracteristicas.html" style="color:#9ca3af;text-decoration:none">Características</a>
+                <a href="formatos.html" style="color:#9ca3af;text-decoration:none">Formatos</a>
+                <a href="https://github.com/Pau-Guerrero/Rename" target="_blank" rel="noopener noreferrer" style="color:#9ca3af;text-decoration:none">GitHub</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+    var sc_project=13225998; 
+    var sc_invisible=1; 
+    var sc_security="4431a039"; 
+    </script>
+    <script type="text/javascript"
+    src="https://www.statcounter.com/counter/counter.js"
+    async></script>
+    <noscript><div class="statcounter"><a title="hit counter"
+    href="https://statcounter.com/" target="_blank"><img
+    class="statcounter"
+    src="https://c.statcounter.com/13225998/0/4431a039/1/"
+    alt="hit counter"
+    referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

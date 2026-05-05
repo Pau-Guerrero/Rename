@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="es" data-lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Características - RenameGX</title>
+    <meta name="description" content="Descubre todas las características de RenameGX para renombrar imágenes de forma masiva.">
+    <meta name="theme-color" content="#08090d">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" onload="this.onload=null;this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"></noscript>
+    
+    <script src="https://cdn.tailwindcss.com" defer></script>
+    
+    <style>
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+        html{scroll-behavior:smooth}
+        
+        body{
+            font-family:'Space Grotesk',system-ui,-apple-system,sans-serif;
+            background:#08090d;color:#e4e4e9;
+            min-height:100vh;overflow-x:hidden;
+        }
+        
+        .hidden{display:none!important}
+        .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+        .skip-link{position:absolute;top:-100%;left:16px;background:#00e5a0;color:#08090d;padding:12px 24px;border-radius:0 0 12px 12px;font-weight:600;z-index:100000;transition:top .3s}.skip-link:focus{top:0}
+        
+        .grid-pattern{position:fixed;inset:0;background-image:linear-gradient(#1f2130 1px,transparent 1px),linear-gradient(90deg,#1f2130 1px,transparent 1px);background-size:80px 80px;opacity:.08;pointer-events:none;z-index:0}
+        .noise{position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.03;pointer-events:none;z-index:1}
+        
+        nav{
+            position:fixed;top:0;left:0;right:0;z-index:50;
+            padding:16px 24px;
+            backdrop-filter:blur(20px);
+            background:rgba(8,9,13,.7);
+            border-bottom:1px solid #1f2130;
+        }
+        
+        .logo{display:flex;align-items:center;gap:12px;font-weight:800;font-size:1.5rem;text-decoration:none;color:inherit}
+        .logo-icon{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#00e5a0,#00b8ff);display:flex;align-items:center;justify-content:center}
+        .logo-gx{color:#00e5a0}
+        
+        .nav-link{color:#5c5c6d;text-decoration:none;font-weight:500;transition:color .2s;padding:8px 16px;border-radius:8px}
+        .nav-link:hover,.nav-link:focus{color:#e4e4e9;background:rgba(255,255,255,.05)}
+        
+        .btn-primary{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:linear-gradient(135deg,#00e5a0,#00b8ff);color:#08090d;font-weight:700;border:none;border-radius:12px;cursor:pointer;text-decoration:none;transition:transform .2s,box-shadow .2s}
+        .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 40px rgba(0,229,160,.3)}
+        
+        .feature-card{
+            background:rgba(15,17,23,.6);
+            border:1px solid #1f2130;
+            border-radius:20px;
+            padding:32px;
+            transition:all .3s ease;
+            position:relative;
+            overflow:hidden;
+        }
+        .feature-card::before{
+            content:'';position:absolute;top:0;left:0;right:0;height:2px;
+            background:linear-gradient(90deg,transparent,#00e5a0,transparent);
+            opacity:0;transition:opacity .3s
+        }
+        .feature-card:hover{border-color:rgba(0,229,160,.3);transform:translateY(-4px)}
+        .feature-card:hover::before{opacity:1}
+        
+        .icon-box{
+            width:56px;height:56px;border-radius:14px;
+            background:rgba(0,229,160,.12);
+            display:flex;align-items:center;justify-content:center;
+            margin-bottom:20px;
+        }
+        
+        .hero-section{
+            padding:140px 24px 80px;
+            text-align:center;
+            position:relative;
+        }
+        
+        .badge{
+            display:inline-flex;align-items:center;gap:8px;
+            padding:8px 16px;background:rgba(0,229,160,.12);
+            border:1px solid rgba(0,229,160,.2);border-radius:100px;
+            font-size:.85rem;color:#00e5a0;margin-bottom:24px;
+        }
+        
+        .comparison-table{
+            width:100%;border-collapse:collapse;
+            background:rgba(15,17,23,.6);
+            border:1px solid #1f2130;
+            border-radius:16px;overflow:hidden;
+        }
+        .comparison-table th,.comparison-table td{
+            padding:16px 20px;text-align:left;border-bottom:1px solid #1f2130
+        }
+        .comparison-table th{background:rgba(0,229,160,.08);color:#00e5a0;font-weight:600}
+        .comparison-table tr:last-child td{border-bottom:none}
+        .check{color:#00e5a0}
+        .cross{color:#5c5c6d}
+        
+        @media(prefers-reduced-motion:reduce){
+            *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+        }
+
+        /* Animaciones de entrada */
+        .fade-in{opacity:0;transform:translateY(30px);transition:all .6s ease}
+        .fade-in.visible{opacity:1;transform:translateY(0)}
+    </style>
+</head>
+<body>
+    <a href="#main" class="skip-link">Saltar al contenido</a>
+    <div class="grid-pattern" aria-hidden="true"></div>
+    <div class="noise" aria-hidden="true"></div>
+
+    <!-- Navegación -->
+    <nav role="navigation" aria-label="Navegación principal">
+        <div style="max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between">
+            <a href="index.html" class="logo">
+                <div class="logo-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#08090d" stroke-width="2.5"><path d="M12 3v18M8 7l4-4 4 4M4 14h16M8 20l4 4 4-4"/><text x="12" y="17" text-anchor="middle" font-size="8" font-weight="bold" fill="#08090d">GX</text></svg></div>
+                <span>Rename<span class="logo-gx">GX</span></span>
+            </a>
+            <div style="display:flex;align-items:center;gap:8px">
+                <a href="index.html" class="nav-link">Inicio</a>
+                <a href="caracteristicas.html" class="nav-link" style="color:#00e5a0">Características</a>
+                <a href="formatos.html" class="nav-link">Formatos</a>
+                <a href="https://github.com/Pau-Guerrero/Rename" target="_blank" rel="noopener noreferrer" class="nav-link">GitHub</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero-section" aria-labelledby="page-title">
+        <div style="max-width:900px;margin:auto;position:relative;z-index:2">
+            <div class="badge fade-in">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                Todo lo que necesitas
+            </div>
+            <h1 id="page-title" class="fade-in" style="font-size:clamp(2.5rem,7vw,4.5rem);font-weight:800;line-height:1.1;letter-spacing:-.03em;margin-bottom:24px">
+                Características<br><span style="background:linear-gradient(135deg,#00e5a0,#00b8ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">potentes</span>
+            </h1>
+            <p class="fade-in" style="font-size:1.2rem;color:#5c5c6d;max-width:600px;margin:0 auto;line-height:1.7">
+                RenameGX está diseñado para ser rápido, seguro y extremadamente fácil de usar. Descubre todo lo que puede hacer por ti.
+            </p>
+        </div>
+    </section>
+
+    <!-- Contenido Principal -->
+    <main id="main" style="position:relative;z-index:10;max-width:1200px;margin:0 auto;padding:0 24px 100px">
+        
+        <!-- Features Grid -->
+        <section aria-labelledby="features-title" style="margin-bottom:80px">
+            <h2 id="features-title" class="fade-in" style="font-size:2rem;font-weight:700;text-align:center;margin-bottom:48px">Funcionalidades principales</h2>
+            
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px">
+                
+                <!-- Feature 1 -->
+                <article class="feature-card fade-in">
+                    <div class="icon-box">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00e5a0" stroke-width="2"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
+                    </div>
+                    <h3 style="font-size:1.25rem;font-weight:700;margin-bottom:12px">Renombrado masivo</h3>
+                    <p style="color:#5c5c6d;line-height:1.7">Procesa cientos o miles de imágenes simultáneamente con un solo clic. Ahorra horas de trabajo manual.</p>
+                </article>
+
+                <!-- Feature 2 -->
+                <article class="feature-card fade-in">
+                    <div class="icon-box">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00e5a0" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    </div>
+                    <h3 style="font-size:1.25rem;font-weight:700;margin-bottom:12px">100% Local y privado</h3>
+                    <p style="color:#5c5c6d;line-height:1.7">Tus archivos nunca salen de tu dispositivo. Todo el procesamiento ocurre localmente en tu navegador.</p>
+                </article>
+
+                <!-- Feature 3 -->
+                <article class="feature-card fade-in">
+                    <div class="icon-box">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00e5a0" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    </div>
+                    <h3 style="font-size:1.25rem;font-weight:700;margin-bottom:12px">Vista previa instantánea</h3>
+                    <p style="color:#5c5c6d;line-height:1.7">Previsualiza cómo quedarán tus archivos antes de aplicar los cambios. Sin sorpresas desagradables.</p>
+                </article>
+
+                <!-- Feature 4 -->
+                <article class="feature-card fade-in">
+                    <div class="icon-box">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00e5a0" stroke-width="2"><path d="M17 3a2.828 2.828 0 114 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>
+                    </div>
+                    <h3 style="font-size:1.25rem;font-weight:700;margin-bottom:12px">Patrones personalizables</h3>
+                    <p style="color:#5c5c6d;line-height:1.7">Define prefijos, sufijos, numeración automática, fechas y más. Control total sobre el resultado.</p>
+                </article>
+
+                <!-- Feature 5 -->
+                <article class="feature-card fade-in">
+                    <div class="icon-box">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00e5a0" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                    </div>
+                    <h3 style="font-size:1.25rem;font-weight:700;margin-bottom:12px">Descarga en ZIP</h3>
+                    <p style="color:#5c5c6d;line-height:1.7">Descarga todas tus imágenes renombradas en un único archivo ZIP listo para compartir.</p>
+                </article>
+
+                <!-- Feature 6 -->
+                <article class="feature-card fade-in">
+                    <div class="icon-box">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00e5a0" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+                    </div>
+                    <h3 style="font-size:1.25rem;font-weight:700;margin-bottom:12px">Deshacer cambios</h3>
+                    <p style="color:#5c5c6d;line-height:1.7">Te equivocaste? No hay problema. Deshaz los cambios con Ctrl+Z o el botón de deshacer.</p>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Modos de renombrado -->
+        <section aria-labelledby="modes-title" style="margin-bottom:80px">
+            <h2 id="modes-title" class="fade-in" style="font-size:2rem;font-weight:700;text-align:center;margin-bottom:48px">Modos de renombrado</h2>
+            
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(400px,1fr));gap:24px">
+                
+                <!-- Modo Avanzado -->
+                <div class="feature-card fade-in" style="border-left:4px solid #00e5a0">
+                    <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
+                        <div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#00e5a0,#00b8ff);display:flex;align-items:center;justify-content:center">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#08090d" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.64 15a1.65 1.65 0 0 0-1.51-1H2a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 3.46 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 7.58 4.36a1.65 1.65 0 0 0 1-1.51V2a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.36 7a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                        </div>
+                        <div>
+                            <h3 style="font-size:1.35rem;font-weight:700">Modo Avanzado</h3>
+                            <span style="font-size:.85rem;color:#00e5a0">Recomendado</span>
+                        </div>
+                    </div>
+                    <ul style="list-style:none;display:flex;flex-direction:column;gap:12px">
+                        <li style="display:flex;align-items:center;gap:10px;color:#5c5c6d"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00e5a0" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Prefijo personalizable</li>
+                        <li style="display:flex;align-items:center;gap:10px;color:#5c5c6d"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00e5a0" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Sufijo personalizable</li>
+                        <li style="display:flex;align-items:center;gap:10px;color:#5c5c6d"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00e5a0" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Numeración con padding</li>
+                        <li style="display:flex;align-items:center;gap:10px;color:#5c5c6d"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00e5a0" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Añadir fecha automática</li>
+                        <li style="display:flex;align-items:center;gap:10px;color:#5c5c6d"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00e5a0" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Conversión a minúsculas</li>
+                    </ul>
+                    <div style="margin-top:20px;padding:16px;background:rgba(0,0,0,.3);border-radius:10px">
+                        <code style="font-family:'JetBrains Mono',monospace;font-size:.9rem;color:#00e5a0">vacaciones_001.jpg</code>
+                    </div>
+                </div>
+
+                <!-- Modo Numérico -->
+                <div class="feature-card fade-in" style="border-left:4px solid #00b8ff">
+                    <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
+                        <div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#00b8ff,#0066ff);display:flex;align-items:center;justify-content:center">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#08090d" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        </div>
+                        <div>
+                            <h3 style="font-size:1.35rem;font-weight:700">Modo Numérico Simple</h3>
+                            <span style="font-size:.85rem;color:#00b8ff">Rápido</span>
+                        </div>
+                    </div>
+                    <ul style="list-style:none;display:flex;flex-direction:column;gap:12px">
+                        <li style="display:flex;align-items:center;gap:10px;color:#5c5c6d"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00b8ff" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Solo número inicial</li>
+                        <li style="display:flex;align-items:center;gap:10px;color:#5c5c6d"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00b8ff" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Extensión personalizable</li>
+                        <li style="display:flex;align-items:center;gap:10px;color:#5c5c6d"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00b8ff" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Ideal para secuencias</li>
+                        <li style="display:flex;align-items:center;gap:10px;color:#5c5c6d"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00b8ff" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Configuración mínima</li>
+                    </ul>
+                    <div style="margin-top:20px;padding:16px;background:rgba(0,0,0,.3);border-radius:10px">
+                        <code style="font-family:'JetBrains Mono',monospace;font-size:.9rem;color:#00b8ff">1.jpg, 2.jpg, 3.jpg...</code>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Comparativa -->
+        <section aria-labelledby="compare-title" style="margin-bottom:80px">
+            <h2 id="compare-title" class="fade-in" style="font-size:2rem;font-weight:700;text-align:center;margin-bottom:48px">Por qué elegir RenameGX</h2>
+            
+            <div class="fade-in" style="overflow-x:auto">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Característica</th>
+                            <th>RenameGX</th>
+                            <th>Otras herramientas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="font-weight:500">100% Gratuito</td>
+                            <td><span class="check">✓ Siempre</span></td>
+                            <td><span class="cross">✗ Pagos ocultos</span></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:500">Procesamiento local</td>
+                            <td><span class="check">✓ Totalmente</span></td>
+                            <td><span class="cross">✗ Suben tus archivos</span></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:500">Sin registro</td>
+                            <td><span class="check">✓ Ninguno</span></td>
+                            <td><span class="cross">✗ Obligatorio</span></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:500">Open Source</td>
+                            <td><span class="check">✓ Código abierto</span></td>
+                            <td><span class="cross">✗ Cerrado</span></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:500">Descarga ZIP</td>
+                            <td><span class="check">✓ Incluido</span></td>
+                            <td><span class="cross">✗ De pago</span></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:500">Deshacer cambios</td>
+                            <td><span class="check">✓ Instantáneo</span></td>
+                            <td><span class="cross">✗ No disponible</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="fade-in" style="text-align:center;padding:60px 40px;background:linear-gradient(135deg,rgba(0,229,160,.08),rgba(0,184,255,.08));border:1px solid rgba(0,229,160,.15);border-radius:24px">
+            <h2 style="font-size:2rem;font-weight:700;margin-bottom:16px">¿Listo para probarlo?</h2>
+            <p style="color:#5c5c6d;margin-bottom:28px;max-width:500px;margin-left:auto;margin-right:auto">Empieza a renombrar tus imágenes ahora mismo. Es gratis y no requiere instalación.</p>
+            <a href="index.html" class="btn-primary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                Empezar ahora
+            </a>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer style="position:relative;z-index:10;background:#0f1117;border-top:1px solid #1f2130;padding:48px 24px 32px;margin-top:80px">
+        <div style="max-width:1200px;margin:auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;font-size:.9rem;color:#9ca3af">
+            <span>© 2025 RenameGX.</span>
+            <div style="display:flex;gap:24px">
+                <a href="index.html" style="color:#9ca3af;text-decoration:none">Inicio</a>
+                <a href="caracteristicas.html" style="color:#9ca3af;text-decoration:none">Características</a>
+                <a href="formatos.html" style="color:#9ca3af;text-decoration:none">Formatos</a>
+                <a href="https://github.com/Pau-Guerrero/Rename" target="_blank" rel="noopener noreferrer" style="color:#9ca3af;text-decoration:none">GitHub</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Statcounter -->
+    <script type="text/javascript">
+    var sc_project=13225998; 
+    var sc_invisible=1; 
+    var sc_security="4431a039"; 
+    </script>
+    <script type="text/javascript"
+    src="https://www.statcounter.com/counter/counter.js"
+    async></script>
+    <noscript><div class="statcounter"><a title="hit counter"
+    href="https://statcounter.com/" target="_blank"><img
+    class="statcounter"
+    src="https://c.statcounter.com/13225998/0/4431a039/1/"
+    alt="hit counter"
+    referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
+
+    <script>
+        // Animación de entrada al scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
